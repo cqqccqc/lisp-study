@@ -1,0 +1,2 @@
+#lang racket
+(define us-coins (list 50 25 10 5 1))
