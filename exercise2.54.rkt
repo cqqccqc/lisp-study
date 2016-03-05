@@ -1,0 +1,15 @@
+#lang racket
+;(define (equal?))
+(equal? '1 '1)
+(define (equal?? item1 item2)
+  (define (equal-iter item1 item2 result)
+    (if (eq? (car item1) (car item2))
+        (and result #t)
+        (equal-iter (cdr item1) (cdr item2) #f)))
+  (equal-iter item1 item2 true))
+
+(define (equal? a b)
+ (if (and (pair? a) (pair? b))
+　　(and (equal? (car a) (car b))
+　　　　 (equal? (cdr a) (cdr b)))
+　　(eq? a b)))

@@ -1,0 +1,15 @@
+#lang racket
+(define a 1)
+(define b 2)
+(list a b)
+;(1 2)
+(list 'a 'b)
+(list 'a b)
+;(a 2)
+(car '(1 2 3))
+
+(define (memq item x)
+  (cond ((null? x) false)
+        ((eq? item (car x)) x)
+        (else (memq item (cdr x)))))
+(memq 'apple '(pear banana prune apple))
