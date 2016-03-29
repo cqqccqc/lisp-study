@@ -1,0 +1,16 @@
+#lang racket
+(define (key k-v)(car k-v))
+(define (entry tree) (car tree))
+(define (left-branch tree) (cadr tree))
+(define (right-branch tree) (caddr tree))
+(define (make-tree entry left right)
+  (list entry left right))
+
+(define (lookup given-key tree-of-records)
+  (cond ((null? tree-of-records) false)
+        (else (let ((entry-key (key (entry tree-of-records))))
+                (cond ((= given-key entry-key) (entry tree-of-records))
+                      ((< given-key entry-key)
+                       (lookup given-key (left-branch tree-of-records)))
+                      ((> given-key entry-key)
+                       (lookup given-key (right-branch tree-of-records))))))))
