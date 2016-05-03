@@ -7,7 +7,7 @@
 (define (append! x y)
   (define (last-pair x)
     (if (null? (cdr x))
-        (car x)
+        x
         (last-pair (cdr x))))
   (cons (last-pair x) y))
 
