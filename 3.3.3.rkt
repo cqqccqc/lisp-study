@@ -18,3 +18,13 @@
                   (cons (cons key value) (cdr table))))))
 (define (make-table)
   (list '*table*))
+
+;2d table
+(define (lookup-2d key-1 key-2 table)
+  (let ((subtable (assoc key-1 (cdr subtable))))
+    (if subtable
+        (let ((record (assoc key-2 (cdr subtable))))
+          (if record
+              (cdr record)
+              false))
+        false)))
