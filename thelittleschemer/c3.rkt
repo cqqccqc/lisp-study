@@ -62,3 +62,42 @@
     ))
 
 (subset2 10 5 6 '(1 2 3 4 5 6))
+
+(define multirember
+  (lambda (a lat)
+    (cond ((null? lat) '())
+          (else (cond ((eq? (car lat) a) (multirember a (cdr lat)))
+                      (else (cons (car lat) (multirember a (cdr lat))))
+                      ))
+          )
+    ))
+(multirember 1 '(1 2 3 1 4 1 5))
+
+(define multiinsertR
+  (lambda (new old lat)
+    (cond ((null? lat) '())
+          (else (cond ((eq? (car lat) old) (cons (car lat) (cons new (multiinsertR new old (cdr lat)))))
+                      (else (cons (car lat)(multiinsertR new old (cdr lat))))
+                      ))
+          )
+    ))
+(multiinsertR 10 3 '(1 2 3 4 3 5 3 6))
+
+(define multiinsertL
+  (lambda (new old lat)
+    (cond ((null? lat) '())
+          (else (cond ((eq? (car lat) old) (cons new (cons old (multiinsertL new old (cdr lat)))))
+                      (else (cons (car lat)(multiinsertL new old (cdr lat))))
+                      )))
+    ))
+(multiinsertL 10 3 '(1 2 3 4 3 5 3 6))
+
+(define multisubset
+  (lambda (new old lat)
+    (cond ((null? lat) '())
+          (else (cond ((eq? (car lat) old)(cons new (multisubset new old (cdr lat))))
+                      (else (cons (car lat)(multisubset new old (cdr lat))))
+                      ))
+          )
+      ))
+(multisubset 10 3 '(1 2 3 4 3 5 3 6))
