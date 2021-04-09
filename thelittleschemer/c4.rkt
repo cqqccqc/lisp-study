@@ -70,3 +70,16 @@
           (else #t)
           )))
 (o= 1 1)
+
+(define oe
+  (lambda (n m)
+    (cond ((zero? m) 1)
+          (else (o* n (oe n(sub1 m)))))))
+(oe 2 2)
+(oe 2 4)
+
+(define oq
+  (lambda (n m)
+    (cond ((o< n m) 0)
+          (else (add1 (oq (o- n m) m))))))
+(oq 5 2)
