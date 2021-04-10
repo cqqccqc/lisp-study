@@ -83,3 +83,30 @@
     (cond ((o< n m) 0)
           (else (add1 (oq (o- n m) m))))))
 (oq 5 2)
+
+(define length
+  (lambda (lat)
+    (cond ((null? lat) 0)
+          (add1(length(cdr lat))))))
+
+(length '(1 2 3 4 5 6 7 8 9))
+
+(define pick
+  (lambda (n lat)
+    (cond ((zero? (sub1 n))(car lat))
+          (else (pick (sub1 n)(cdr lat))))))
+(pick 3 '(1 2 3 4 5))
+
+(define rempick
+  (lambda (n lat)
+    (cond ((zero? (sub1 n))(cdr lat))
+          (else (cons (car lat)(rempick(sub1 n)(cdr lat)))))))
+(rempick 3 '(1 2 3 4 5))
+
+(define no-nums
+  (lambda (lat)
+    (cond ((null? lat) '())
+          (else (cond ((number? (car lat)) (no-nums(cdr lat)))
+                      (else (cons (car lat)(no-nums (cdr lat)))))))))
+
+(no-nums '(5 "pear" 6 "prunes" 9 "dates"))
