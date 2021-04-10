@@ -110,3 +110,35 @@
                       (else (cons (car lat)(no-nums (cdr lat)))))))))
 
 (no-nums '(5 "pear" 6 "prunes" 9 "dates"))
+
+(define all-nums
+  (lambda (lat)
+    (cond ((null? lat) '())
+          (else (cond ((number? (car lat))(cons (car lat)(all-nums (cdr lat))))
+                      (else (all-nums (cdr lat))))))))
+
+(all-nums '(5 "pear" 6 "prunes" 9 "dates"))
+
+(define eqan?
+  (lambda (a1 a2)
+    (cond
+      ((and (number? a1)(number? a2))(= a1 a2))
+      ((or (number? a1)(number? a2))#f)
+      (else (eq? a1 a2)))))
+
+(define occur
+  (lambda (a lat)
+    (cond ((null? lat)0)
+          (else (cond ((eq? (car lat) a)(add1 (occur a (cdr lat))))
+                      (else (occur a (cdr lat))))))))
+(occur 2 '(1 2 3 2 4 2 5))
+
+(define one?
+  (lambda (n)
+    (= n 1)))
+
+(define rempick2
+  (lambda (n lat)
+    (cond ((one? n)(cdr lat))
+          (else (cons (car lat)(rempick(sub1 n)(cdr lat)))))))
+(rempick2 3 '(1 2 3 4 5))
