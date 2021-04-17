@@ -1,5 +1,6 @@
 #lang racket
 (require "./preset.rkt")
+(require "./c4.rkt")
 
 (define rember*
   (lambda (a l)
@@ -32,3 +33,28 @@
                             (car l))
                   (insertR* new old
                             (cdr l)))))))
+
+(define occur*
+  (lambda (a l)
+    (cond ((null? l) 0)
+    ((atom? (car l))
+     (cond ((eq? (car l) a)
+            (add1(occur* a (cdr l))))
+           (else (occur* a (cdr l)))))
+    (else(o+ (occur* a (car l))
+             (occur* a (cdr l)))))))
+
+(occur* "banana" '(("banana")
+          "split" (((("banana" "ice"))))
+          ("banana")))
+
+(define subset*
+  (lambda (new old l)
+    (cond ((null? l) '())
+          ((atom? (car l))
+           (cond ((eq? (car l) old)
+                  (cons new (subset* new old (cdr l))))
+                 (else (cons (car l)
+                             (subset* new old (cdr l))))))
+          (else (cons (subset* new old (car l))
+                      (subset* new old (cdr l)))))))
