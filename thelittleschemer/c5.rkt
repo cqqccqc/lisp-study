@@ -75,3 +75,19 @@
       (else(cons(insertL* new old
                           (car l))
                 (insertL* new old (cdr l)))))))
+
+(define member*
+  (lambda (a l)
+    (cond
+      ((null? l) #f)
+      ((atom?(car l))
+       (or(eq?(car l)a)
+          (member* a (cdr l))))
+      (else(or(member* a(car l))
+              (member* a (cdr l)))))))
+
+(define leftmost
+  (lambda (l)
+    (cond
+      ((atom?(car l))(car l))
+      (else(leftmost(car l))))))
