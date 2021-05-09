@@ -2,11 +2,13 @@
 
 (define add1
   (lambda (n) (+ n 1)))
+(provide add1)
 
 (add1 10)
 
 (define sub1
   (lambda (n) (- n 1)))
+(provide sub1)
 
 (define o+
   (lambda (n m)
@@ -15,12 +17,15 @@
           )
     ))
 (o+ 3 4)
+(provide o+)
 
 (define o-
   (lambda (n m)
     (cond ((zero? m) n)
           (else (sub1 (o- n (sub1 m)))))))
 (o- 3 2)
+(provide o-)
+
 
 (define addtup
   (lambda (tup)
