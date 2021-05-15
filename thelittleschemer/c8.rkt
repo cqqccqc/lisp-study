@@ -139,4 +139,6 @@
       ((null? lat)'())
       ((test? a (car lat))
        ((multirember-f test?)a(cdr lat)))
-      ))))
+      (else(cons(car lat)
+                ((multirember-f test?)a
+                                      (cdr lat))))))))
