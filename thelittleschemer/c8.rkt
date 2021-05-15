@@ -142,3 +142,36 @@
       (else(cons(car lat)
                 ((multirember-f test?)a
                                       (cdr lat))))))))
+
+(define multirember-eq?
+  (multirember-f eq?))
+
+(define eq?-tuna
+  (eq?-c (quote tuna)))
+
+(define multiremberT
+  (lambda(test? lat)
+    (cond
+      ((null? lat)'())
+      ((test?(car lat))
+       (multiremberT test? (cdr lat)))
+      (else (cons(car lat)
+                 (multiremberT test? (cdr lat)))))))
+(multiremberT eq?-tuna '(shrimp salad tuna salad and tuna))
+
+(define multirember&co
+  (lambda(a lat col)
+    (cond
+      ((null? lat)
+       (col(quote())(quote())))
+      ((eq?(car lat)a)
+       (multirember&co a
+                       (cdr lat)
+                       (lambda(newlat seen)
+                         (col newlat
+                              (cons(car lat)seen)))))
+      (else
+       (multirember&co a
+                       (cdr lat)
+                       (lambda(newlat seen)
+                         (col(cons(car lat)newlat)seen)))))))
