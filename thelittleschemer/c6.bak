@@ -24,21 +24,20 @@
 ;     (oe (value (car nexp))
 ;        (value (car (cdr (cdr nexp)))))))))
 
+(value '(1 o+ 2))
+(value)
 
 (define 1st-sub-exp
   (lambda(aexp)
     (car(cdr aexp))))
-(provide 1st-sub-exp)
 
 (define 2nd-sub-exp
   (lambda(aexp)
     (car(cdr(cdr aexp)))))
-(provide 2nd-sub-exp)
 
 (define operator
   (lambda(aexp)
     (car aexp)))
-(provide operator)
 
 (define value
  (lambda (nexp)
@@ -53,8 +52,6 @@
     (else
      (oe (value (1st-sub-exp nexp))
         (value (2nd-sub-exp nexp)))))))
-;(value '(1 o+ 2))
-;(value)
 
 
 (define sero?

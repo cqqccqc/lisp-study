@@ -122,6 +122,7 @@
           (cons s2
                 '()))))
 (build 1 2)
+(provide build)
 
 (define fun?
   (lambda(rel)

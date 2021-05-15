@@ -1,0 +1,1 @@
+("8.0" ta6nt ("d764987281efbd34dfa5c79697bab5f67f41d20a" . "e52c40e091fc2b7da582a748bcd9a0708240977d") #"F:\\github\\lisp-study\\thelittleschemer\\.\\c4.rkt" #"F:\\github\\lisp-study\\thelittleschemer\\.\\preset.rkt" (collects #"errortrace" #"errortrace-key.rkt") (collects #"racket" #"main.rkt") (collects #"racket" #"runtime-config.rkt"))
