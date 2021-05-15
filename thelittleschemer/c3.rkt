@@ -72,6 +72,7 @@
           )
     ))
 (multirember 1 '(1 2 3 1 4 1 5))
+(provide multirember)
 
 (define multiinsertR
   (lambda (new old lat)

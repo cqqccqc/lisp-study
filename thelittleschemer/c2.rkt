@@ -22,3 +22,4 @@
           (else (or (eq? a (car lat))(member? a (cdr lat))))
     )))
 (member? 1 '(1 2 3))
+(provide member?)
