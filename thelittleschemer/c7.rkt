@@ -102,10 +102,13 @@
       ((null?(cdr(cdr x)))#t)
       (else #f))))
 (a-pair? '(1 2))
+(provide a-pair?)
 
 (define first
   (lambda(p)
     (car p)))
+(provide first)
+
 (define firsts
   (lambda(p)
     (cond ((null? p)'())
@@ -115,6 +118,7 @@
 (define second
   (lambda(p)
     (car(cdr p))))
+(provide second)
 
 (define build
   (lambda(s1 s2)
