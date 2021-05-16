@@ -103,6 +103,7 @@
     (cond ((zero? (sub1 n))(car lat))
           (else (pick (sub1 n)(cdr lat))))))
 (pick 3 '(1 2 3 4 5))
+(provide pick)
 
 (define rempick
   (lambda (n lat)

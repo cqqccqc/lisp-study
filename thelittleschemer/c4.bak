@@ -39,6 +39,7 @@
     (cond ((zero? m) 0)
           (else (o+ n (o* n (sub1 m)))))))
 (o* 10 20)
+(provide o*)
 
 (define tup+
   (lambda (tup1 tup2)
@@ -80,6 +81,7 @@
   (lambda (n m)
     (cond ((zero? m) 1)
           (else (o* n (oe n(sub1 m)))))))
+(provide oe)
 (oe 2 2)
 (oe 2 4)
 
@@ -130,6 +132,7 @@
       ((and (number? a1)(number? a2))(= a1 a2))
       ((or (number? a1)(number? a2))#f)
       (else (eq? a1 a2)))))
+(provide eqan?)
 
 (define occur
   (lambda (a lat)
