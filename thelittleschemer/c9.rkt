@@ -36,3 +36,43 @@
        (align(shift pora)))
       (else(build(first pora)
                  (align(second pora)))))))
+
+(define length*
+  (lambda(pora)
+    (cond
+      ((atom? pora)1)
+      (else
+       (o+(length*(first pora))
+         (length*(second pora)))))))
+
+(define weight*
+  (lambda(pora)
+    (cond
+      ((atom? pora)1)
+      (else
+       (o+(o*(weight*(first pora))2)
+          (weight*(second pora)))))))
+(weight* '((a b) c))
+
+(define shuffle
+  (lambda(pora)
+    (cond
+      ((atom? pora)pora)
+      ((a-pair?(first pora))
+       (shuffle(revpair pora)))
+      (else(build(first pora)
+                 (shuffle(second pora)))))))
+(shuffle '(a(b c)))
+(shuffle '((a b)(c d)))
+
+(lambda(length)
+  (lambda(l)
+    (cond
+      ((null? l)0)
+      (else(add1(length(cdr l)))))))
+
+(define Y
+  (lambda(le)
+    ((lambda(f)(f f))
+     (lambda(f)
+       (le(lambda(x)((f f)x)))))))
